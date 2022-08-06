@@ -68,7 +68,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+        $category = Category::find($id);
+        // $category->slug = null;
+        $category->update($request->all());
+        return redirect()->route('categories.index')->with('success', 'Изменения сохранены');
     }
 
     /**
