@@ -204,7 +204,36 @@
   <!-- /.sidebar -->
   </aside>
 
-  @yield('content')
+  
+  <div class="content-wrapper">
+
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-12">
+          {{-- Ошибки --}}
+          @if ($errors->any())
+           <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
+            {{-- успехи --}}
+          @if (session()->has('success'))
+           <div class="alert alert-success">
+              {{ session('success') }}
+            </div>
+          @endif
+
+        </div>
+      </div>
+    </div>
+
+     @yield('content')
+
+  </div>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
