@@ -18,6 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        // $posts = Post::with('category', 'tags')->paginate(10); из-за настройки этой связи выдает ошибку
         $posts = Post::paginate(10);
         return view('admin.posts.index', compact('posts'));
     }
