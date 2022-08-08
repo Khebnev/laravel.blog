@@ -55,7 +55,7 @@
                                             {{-- <td>{{ $post->category->title }}</td>  --}}
                                             {{-- Вместо category->title пока временно category_id --}}
                                             <td>{{ $post->category_id }}</td> 
-                                            <td>{{ $post->tags }}</td>
+                                            <td>{{ $post->tags->pluck('title')->join(', ') }}</td>
                                             <td>{{ $post->created_at }}</td>
                                             <td>
                                                 <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn btn-info btn-sm float-left mr-1">
