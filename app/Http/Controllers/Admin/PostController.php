@@ -94,16 +94,12 @@ class PostController extends Controller
             'thumbnail' => 'nullable|image',
         ]);
 
-        $post = Post::find('id');
+        $post = Post::find($id);
         $data = $request->all();
 
-        $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
-
-        // if($request->hasFile('thumbnail')) {
-        //     Storage::delete($post->thumbnail);
-        //     $folder = date('Y-m-d');
-        //     $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
-        // }
+        if($file = Post::uploadImage($request, $post->thumbnail)) {
+            $data['thumbnail'] = $file;
+        }
 
         $post->update($data);
         $post->tags()->sync($request->tags);
@@ -120,10 +116,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        $post->tags()->sync();
+        $post->tags()->sync([]);
         Storage::delete($post->thumbnail);
         $post->delete();
 
         return redirect()->route('posts.index')->with('success', 'Статья удалена');
     }
 }
+

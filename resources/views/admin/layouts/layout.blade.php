@@ -272,6 +272,14 @@
               </ul>
             </div>
           @endif
+
+              {{-- ошибки --}}
+              @if (session()->has('error'))
+              <div class="alert alert-danger">
+                 {{ session('error') }}
+               </div>
+             @endif
+
             {{-- успехи --}}
           @if (session()->has('success'))
            <div class="alert alert-success">
@@ -314,6 +322,10 @@
           $(this).closest('.has-treeview').addClass('menu-open');
       }
   });
+  $(document).ready(function () {
+    bsCustomFileInput.init();
+    });
+
 </script>
 
 <script src="{{ asset('assets/admin/ckeditor5/build/ckeditor.js') }}"></script>
