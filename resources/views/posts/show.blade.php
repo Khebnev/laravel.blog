@@ -13,7 +13,7 @@
                 <li class="breadcrumb-item active">{{ $post->title }}</li>
             </ol>
             {{-- Как у лектора --}}
-            {{-- <span class="color-yellow"><a href="{{ route('categories.single', ['slug' => $post->category->slug]) }}" title="">{{ $post->category->title }}</a></span> --}}
+            {{-- <span class="color-yellow"><a href="{{ route('categories.single', ['slug' => $category->slug]) }}" title="">{{ $category->title }}</a></span> --}}
             <span class="color-yellow"><a href="marketing-category.html" title="">Lifestyle</a></span>
 
             <h3>{{ $post->title }}</h3>
