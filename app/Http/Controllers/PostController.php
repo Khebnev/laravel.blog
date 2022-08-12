@@ -17,7 +17,12 @@ class PostController extends Controller
 
     public function show($slug)
     {
-        return view('posts.show');
+        // Как у лектора не заработал:
+        // $post = Post::where('slug', $slug)->firstOfFail();
+        $post = Post::where('slug', $slug)->first();
+        $post->views += 1;
+        $post->update();
+        return view('posts.show', compact('post'));
     }
 
 }
