@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
 {
@@ -14,14 +15,12 @@ class Tag extends Model
 
     protected $fillable = ['title'];
 
-    public function posts()
+    public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);
     }
       /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {

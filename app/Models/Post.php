@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use App\Models\Category;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -15,21 +15,25 @@ class Post extends Model
     use Sluggable;
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'content', 'category_id', 'thumbnail'];
+    protected $fillable = [
+        'title',
+        'description',
+        'content',
+        'category_id',
+        'thumbnail',
+    ];
 
-    public function tags()
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'category_id');
     }
       /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {
