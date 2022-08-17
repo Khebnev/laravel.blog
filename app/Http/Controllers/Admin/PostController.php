@@ -21,9 +21,8 @@ class PostController extends Controller
         
 
         // из-за настройки этой связи выдает ошибку
-        $posts = Post::with('tags', 'categories')->paginate(10); 
-        dd($posts);
-        // $posts = Post::paginate(10);
+        // $posts = Post::with('tags', 'categories')->paginate(10); 
+        $posts = Post::paginate(10);
         return view('admin.posts.index', compact('posts'));
     }
 

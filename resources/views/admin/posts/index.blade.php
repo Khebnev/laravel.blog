@@ -52,9 +52,9 @@
                                         <tr>
                                             <td>{{ $post->id }}</td>
                                             <td>{{ $post->title }}</td>
-                                            {{-- <td>{{ $post->category->title }}</td>  --}}
+                                            <td>{{ $post->category->title }}</td> 
                                             {{-- Вместо category->title пока временно category_id --}}
-                                            <td>{{ $post->category_id }}</td> 
+                                            {{-- <td>{{ $post->category_id }}</td>  --}}
                                             <td>{{ $post->tags->pluck('title')->join(', ') }}</td>
                                             <td>{{ $post->created_at }}</td>
                                             <td>
