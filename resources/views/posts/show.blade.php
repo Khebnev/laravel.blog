@@ -8,8 +8,8 @@
         <div class="blog-title-area">
             <ol class="breadcrumb hidden-xs-down">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                {{-- <li class="breadcrumb-item"><a href="{{ route('categories.single', ['slug' => $post->category->slug]) }}">{{ $post->category->title }}</a></li> --}}
-                <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('categories.single', ['slug' => $post->category->slug]) }}">{{ $post->category->title }}</a></li>
+                {{-- <li class="breadcrumb-item"><a href="#">Blog</a></li> --}}
                 <li class="breadcrumb-item active">{{ $post->title }}</li>
             </ol>
             {{-- Как у лектора --}}
